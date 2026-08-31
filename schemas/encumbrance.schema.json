@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SCN Encumbrance Summary",
+  "type": "object",
+  "required": [
+    "gross_value",
+    "encumbered_value",
+    "currency"
+  ],
+  "properties": {
+    "gross_value": {
+      "type": "number",
+      "minimum": 0
+    },
+    "encumbered_value": {
+      "type": "number",
+      "minimum": 0
+    },
+    "currency": {
+      "type": "string"
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

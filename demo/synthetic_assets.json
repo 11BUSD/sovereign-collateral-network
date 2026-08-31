@@ -1,0 +1,72 @@
+[
+  {
+    "id": "SUKUK-001",
+    "name": "Synthetic GCC Sukuk",
+    "class": "Sukuk",
+    "gross": 300000000,
+    "encumbered": 87000000,
+    "status": "REVIEW",
+    "policy": "Sharia review recorded",
+    "jurisdiction": "GCC"
+  },
+  {
+    "id": "BTC-001",
+    "name": "Synthetic Institutional BTC",
+    "class": "Digital Asset",
+    "gross": 200000000,
+    "encumbered": 74000000,
+    "status": "ELIGIBLE_SYNTHETIC",
+    "policy": "Institutional custody policy",
+    "jurisdiction": "ADGM"
+  },
+  {
+    "id": "UST-001",
+    "name": "Synthetic Tokenized Treasury",
+    "class": "Tokenized Security",
+    "gross": 150000000,
+    "encumbered": 48000000,
+    "status": "REVIEW",
+    "policy": "Regulated-product gate",
+    "jurisdiction": "ADGM"
+  },
+  {
+    "id": "GOLD-001",
+    "name": "Synthetic Allocated Gold",
+    "class": "Commodity",
+    "gross": 100000000,
+    "encumbered": 22000000,
+    "status": "ELIGIBLE_SYNTHETIC",
+    "policy": "Custody evidence complete",
+    "jurisdiction": "UAE"
+  },
+  {
+    "id": "LNG-001",
+    "name": "Synthetic LNG Receivable",
+    "class": "Trade Finance",
+    "gross": 100000000,
+    "encumbered": 52000000,
+    "status": "REVIEW",
+    "policy": "Evidence package review",
+    "jurisdiction": "Cross-border"
+  },
+  {
+    "id": "TF-001",
+    "name": "Synthetic Trade Finance Pool",
+    "class": "Receivable",
+    "gross": 50000000,
+    "encumbered": 18000000,
+    "status": "REVIEW",
+    "policy": "Counterparty review",
+    "jurisdiction": "GCC"
+  },
+  {
+    "id": "CASH-001",
+    "name": "Synthetic Cash Reserve",
+    "class": "Cash",
+    "gross": 100000000,
+    "encumbered": 40000000,
+    "status": "ELIGIBLE_SYNTHETIC",
+    "policy": "Reserve policy",
+    "jurisdiction": "UAE"
+  }
+]

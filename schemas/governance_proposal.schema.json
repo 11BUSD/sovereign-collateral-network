@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SCN Governance Proposal",
+  "type": "object",
+  "required": [
+    "proposal_id",
+    "title",
+    "risk_class",
+    "state",
+    "required_reviews"
+  ],
+  "properties": {
+    "proposal_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "risk_class": {
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "CRITICAL"
+      ]
+    },
+    "state": {
+      "enum": [
+        "DRAFT",
+        "EVIDENCE_REVIEW",
+        "RISK_REVIEW",
+        "LEGAL_REVIEW",
+        "SHARIA_REVIEW",
+        "APPROVED",
+        "TIMELOCKED",
+        "EXECUTABLE",
+        "EXECUTED",
+        "BLOCKED"
+      ]
+    },
+    "required_reviews": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

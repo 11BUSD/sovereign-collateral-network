@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SCN Asset Passport (Public)",
+  "type": "object",
+  "required": [
+    "asset_id",
+    "version",
+    "asset_class",
+    "jurisdiction",
+    "status",
+    "evidence_refs",
+    "encumbrance"
+  ],
+  "properties": {
+    "asset_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "asset_class": {
+      "type": "string"
+    },
+    "issuer_or_obligor": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "jurisdiction": {
+      "type": "string"
+    },
+    "custodian": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "DRAFT",
+        "REVIEW",
+        "VERIFIED_RECORD",
+        "RESTRICTED",
+        "RETIRED"
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "policy_attestations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "encumbrance": {
+      "$ref": "encumbrance.schema.json"
+    }
+  }
+}

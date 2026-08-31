@@ -1,0 +1,19 @@
+name: Validate public release
+on:
+  push:
+  pull_request:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check JavaScript syntax
+        run: node --check demo/app.js
+      - name: Validate JSON documents
+        run: node -e "for (const f of ['demo/synthetic_assets.json','schemas/asset_passport.schema.json','schemas/encumbrance.schema.json','schemas/governance_proposal.schema.json']) JSON.parse(require('fs').readFileSync(f))"
+      - name: Enforce public boundary
+        shell: bash
+        run: test ! -e PRIVATE_FOUNDER
