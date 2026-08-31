@@ -92,6 +92,7 @@ Synthetic Financing / Settlement Simulator
 │   ├── ASSET_PASSPORT_SPEC.md
 │   ├── THREAT_MODEL.md
 │   ├── REGULATORY_BOUNDARY.md
+│   ├── HYDROCARBON_COLLATERAL_OVERVIEW.md
 │   └── PUBLIC_PRIVATE_BOUNDARY.md
 ├── schemas/
 │   ├── asset_passport.schema.json

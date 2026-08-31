@@ -1,19 +1,259 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Synthetic institutional collateral operations demonstrator.">
-  <title>Sovereign Collateral Network — Operations Console</title><link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<aside class="sidebar"><a class="brand" href="#overview"><span class="brandMark">S</span><span><b>SCN</b><small>Operations Console</small></span></a><nav><button class="navItem active" data-view="overview"><span>01</span> Overview</button><button class="navItem" data-view="registry"><span>02</span> Asset registry</button><button class="navItem" data-view="risk"><span>03</span> Risk harness</button><button class="navItem" data-view="governance"><span>04</span> Governance</button><button class="navItem" data-view="settlement"><span>05</span> Settlement lab</button></nav><div class="systemState"><i></i><span><b>Simulation healthy</b><small>All systems synthetic</small></span></div></aside>
-<main><header><div><span class="eyebrow">INSTITUTIONAL RESEARCH PROTOTYPE</span><h1 id="pageTitle">Collateral overview</h1></div><div class="headerActions"><span class="asOf" id="asOf"></span><button class="secondary" id="exportBtn">Export snapshot</button><button id="wallet">Demo access</button></div></header>
-<div class="notice"><b>SIMULATION MODE</b><span>No real assets, financing, execution, or policy certification. All values and entities are fictional.</span></div>
-<section class="view active" id="overview"><div class="metrics" id="metrics"></div><div class="split wideLeft"><article class="panel"><div class="panelHead"><div><span class="kicker">PORTFOLIO</span><h2>Collateral composition</h2></div><span class="liveLabel"><i></i> SYNTHETIC</span></div><div id="composition" class="composition"></div></article><article class="panel"><div class="panelHead"><div><span class="kicker">CAPACITY</span><h2>Availability</h2></div></div><div id="capacityRing" class="ringWrap"></div></article></div>
-<article class="panel"><div class="panelHead"><div><span class="kicker">WATCHLIST</span><h2>Institutional asset registry</h2></div><button class="textButton" data-route="registry">View all passports →</button></div><div id="assetPreview"></div></article><div class="split"><article class="panel"><div class="panelHead"><div><span class="kicker">DEPENDENCIES</span><h2>Risk graph</h2></div></div><div id="riskGraph" class="riskGraph"></div></article><article class="panel"><div class="panelHead"><div><span class="kicker">CONTROL PLANE</span><h2>Governance queue</h2></div><span class="count" id="proposalCount"></span></div><div id="govPreview"></div></article></div></section>
-<section class="view" id="registry"><div class="toolbar"><label class="search"><span>⌕</span><input id="assetSearch" placeholder="Search asset, ID, class, jurisdiction"></label><div class="filters" id="assetFilters"></div></div><article class="panel noPad"><div class="tableHead assetGrid"><span>Asset passport</span><span>Gross value</span><span>Encumbered</span><span>Available</span><span>Record state</span></div><div id="assetTable"></div></article><dialog id="passportDialog"><button class="dialogClose" aria-label="Close">×</button><div id="passportDetail"></div></dialog></section>
-<section class="view" id="risk"><div class="metrics" id="riskMetrics"></div><div class="split wideLeft"><article class="panel"><div class="panelHead"><div><span class="kicker">SCENARIO LAB</span><h2>Stress the balance sheet</h2></div><button class="textButton" id="resetScenario">Reset scenario</button></div><div id="scenarioButtons" class="scenarioButtons"></div><div id="stressOutput" class="scenarioOutput"></div></article><article class="panel"><span class="kicker">POST-SHOCK</span><h2>Control response</h2><ol id="controlResponse" class="controlList"></ol></article></div><article class="panel"><div class="panelHead"><div><span class="kicker">CONCENTRATION</span><h2>Exposure by asset class</h2></div></div><div id="exposureBars"></div></article></section>
-<section class="view" id="governance"><div class="split wideLeft"><article class="panel"><div class="panelHead"><div><span class="kicker">PROPOSALS</span><h2>Review queue</h2></div><span class="liveLabel"><i></i> CONTROLLED</span></div><div id="proposalList"></div></article><article class="panel"><span class="kicker">SEPARATION OF POWERS</span><h2>Approval boundaries</h2><div id="approvalBodies" class="approvalBodies"></div></article></div><article class="panel"><div class="panelHead"><div><span class="kicker">PROTECTED MATTERS</span><h2>Execution safeguards</h2></div></div><div class="safeguards"><div><b>Independent review</b><span>Required for critical changes</span></div><div><b>Supermajority</b><span>No unilateral approval</span></div><div><b>Timelock</b><span>Observable execution delay</span></div><div><b>Bounded pause</b><span>Emergency scope is limited</span></div></div></article></section>
-<section class="view" id="settlement"><div class="split wideLeft"><article class="panel"><span class="kicker">SYNTHETIC FACILITY</span><h2>Financing simulator</h2><form id="settlementForm"><label>Collateral passport<select id="facilityAsset"></select></label><label>Requested financing (USD)<input id="facilityAmount" type="number" min="1000000" step="1000000" value="25000000"></label><label>Term<select id="facilityTerm"><option>30 days</option><option>90 days</option><option>180 days</option></select></label><button type="submit">Run policy checks</button></form></article><article class="panel"><span class="kicker">DECISION TRACE</span><h2>Candidate route</h2><div id="settlementResult" class="emptyState">Select a passport and run the policy checks. The simulator never executes a transaction.</div></article></div><article class="panel"><div class="panelHead"><div><span class="kicker">LAUNCH BOUNDARY</span><h2>Stable asset gates</h2></div><span class="pill review">NOT CLEARED</span></div><div class="gates" id="launchGates"></div></article></section>
-<footer>SCN research demonstrator · Synthetic data only · Not legal, investment, regulatory, or religious advice.</footer></main><script src="app.js"></script>
-</body></html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Synthetic institutional collateral operations demonstrator."
+    />
+    <title>Sovereign Collateral Network — Operations Console</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <a class="brand" href="#overview"
+        ><span class="brandMark">S</span
+        ><span><b>SCN</b><small>Operations Console</small></span></a
+      >
+      <nav>
+        <button class="navItem active" data-view="overview">
+          <span>01</span> Overview</button
+        ><button class="navItem" data-view="registry">
+          <span>02</span> Asset registry</button
+        ><button class="navItem" data-view="risk">
+          <span>03</span> Risk harness</button
+        ><button class="navItem" data-view="governance">
+          <span>04</span> Governance</button
+        ><button class="navItem" data-view="settlement">
+          <span>05</span> Settlement lab
+        </button>
+      </nav>
+      <div class="systemState">
+        <i></i
+        ><span
+          ><b>Simulation healthy</b><small>All systems synthetic</small></span
+        >
+      </div>
+    </aside>
+    <main>
+      <header>
+        <div>
+          <span class="eyebrow">GCC COMMODITY COLLATERAL · RESEARCH PROTOTYPE</span>
+          <h1 id="pageTitle">Collateral overview</h1>
+        </div>
+        <div class="headerActions">
+          <span class="asOf" id="asOf"></span
+          ><button class="secondary" id="exportBtn">Export snapshot</button
+          ><button id="wallet">Demo access</button>
+        </div>
+      </header>
+      <div class="notice">
+        <b>SIMULATION MODE</b
+        ><span
+          >No real assets, financing, execution, or policy certification. All
+          values and entities are fictional.</span
+        >
+      </div>
+      <section class="view active" id="overview">
+        <div class="metrics" id="metrics"></div>
+        <div class="split wideLeft">
+          <article class="panel">
+            <div class="panelHead">
+              <div>
+                <span class="kicker">PORTFOLIO</span>
+                <h2>Collateral composition</h2>
+              </div>
+              <span class="liveLabel"><i></i> SYNTHETIC</span>
+            </div>
+            <div id="composition" class="composition"></div>
+          </article>
+          <article class="panel">
+            <div class="panelHead">
+              <div>
+                <span class="kicker">CAPACITY</span>
+                <h2>Availability</h2>
+              </div>
+            </div>
+            <div id="capacityRing" class="ringWrap"></div>
+          </article>
+        </div>
+        <article class="panel">
+          <div class="panelHead">
+            <div>
+              <span class="kicker">WATCHLIST</span>
+              <h2>Institutional asset registry</h2>
+            </div>
+            <button class="textButton" data-route="registry">
+              View all passports →
+            </button>
+          </div>
+          <div id="assetPreview"></div>
+        </article>
+        <div class="split">
+          <article class="panel">
+            <div class="panelHead">
+              <div>
+                <span class="kicker">DEPENDENCIES</span>
+                <h2>Risk graph</h2>
+              </div>
+            </div>
+            <div id="riskGraph" class="riskGraph"></div>
+          </article>
+          <article class="panel">
+            <div class="panelHead">
+              <div>
+                <span class="kicker">CONTROL PLANE</span>
+                <h2>Governance queue</h2>
+              </div>
+              <span class="count" id="proposalCount"></span>
+            </div>
+            <div id="govPreview"></div>
+          </article>
+        </div>
+      </section>
+      <section class="view" id="registry">
+        <div class="toolbar">
+          <label class="search"
+            ><span>⌕</span
+            ><input
+              id="assetSearch"
+              placeholder="Search asset, ID, class, jurisdiction"
+          /></label>
+          <div class="filters" id="assetFilters"></div>
+        </div>
+        <article class="panel noPad">
+          <div class="tableHead assetGrid">
+            <span>Asset passport</span><span>Gross value</span
+            ><span>Encumbered</span><span>Available</span
+            ><span>Record state</span>
+          </div>
+          <div id="assetTable"></div>
+        </article>
+        <dialog id="passportDialog">
+          <button class="dialogClose" aria-label="Close">×</button>
+          <div id="passportDetail"></div>
+        </dialog>
+      </section>
+      <section class="view" id="risk">
+        <div class="metrics" id="riskMetrics"></div>
+        <div class="split wideLeft">
+          <article class="panel">
+            <div class="panelHead">
+              <div>
+                <span class="kicker">SCENARIO LAB</span>
+                <h2>Stress the balance sheet</h2>
+              </div>
+              <button class="textButton" id="resetScenario">
+                Reset scenario
+              </button>
+            </div>
+            <div id="scenarioButtons" class="scenarioButtons"></div>
+            <div id="stressOutput" class="scenarioOutput"></div>
+          </article>
+          <article class="panel">
+            <span class="kicker">POST-SHOCK</span>
+            <h2>Control response</h2>
+            <ol id="controlResponse" class="controlList"></ol>
+          </article>
+        </div>
+        <article class="panel">
+          <div class="panelHead">
+            <div>
+              <span class="kicker">CONCENTRATION</span>
+              <h2>Exposure by asset class</h2>
+            </div>
+          </div>
+          <div id="exposureBars"></div>
+        </article>
+      </section>
+      <section class="view" id="governance">
+        <div class="split wideLeft">
+          <article class="panel">
+            <div class="panelHead">
+              <div>
+                <span class="kicker">PROPOSALS</span>
+                <h2>Review queue</h2>
+              </div>
+              <span class="liveLabel"><i></i> CONTROLLED</span>
+            </div>
+            <div id="proposalList"></div>
+          </article>
+          <article class="panel">
+            <span class="kicker">SEPARATION OF POWERS</span>
+            <h2>Approval boundaries</h2>
+            <div id="approvalBodies" class="approvalBodies"></div>
+          </article>
+        </div>
+        <article class="panel">
+          <div class="panelHead">
+            <div>
+              <span class="kicker">PROTECTED MATTERS</span>
+              <h2>Execution safeguards</h2>
+            </div>
+          </div>
+          <div class="safeguards">
+            <div>
+              <b>Independent review</b
+              ><span>Required for critical changes</span>
+            </div>
+            <div><b>Supermajority</b><span>No unilateral approval</span></div>
+            <div><b>Timelock</b><span>Observable execution delay</span></div>
+            <div>
+              <b>Bounded pause</b><span>Emergency scope is limited</span>
+            </div>
+          </div>
+        </article>
+      </section>
+      <section class="view" id="settlement">
+        <div class="split wideLeft">
+          <article class="panel">
+            <span class="kicker">SYNTHETIC FACILITY</span>
+            <h2>Financing simulator</h2>
+            <form id="settlementForm">
+              <label
+                >Collateral passport<select id="facilityAsset"></select></label
+              ><label
+                >Requested financing (USD)<input
+                  id="facilityAmount"
+                  type="number"
+                  min="1000000"
+                  step="1000000"
+                  value="25000000" /></label
+              ><label
+                >Term<select id="facilityTerm">
+                  <option>30 days</option>
+                  <option>90 days</option>
+                  <option>180 days</option>
+                </select></label
+              ><button type="submit">Run policy checks</button>
+            </form>
+          </article>
+          <article class="panel">
+            <span class="kicker">DECISION TRACE</span>
+            <h2>Candidate route</h2>
+            <div id="settlementResult" class="emptyState">
+              Select a passport and run the policy checks. The simulator never
+              executes a transaction.
+            </div>
+          </article>
+        </div>
+        <article class="panel">
+          <div class="panelHead">
+            <div>
+              <span class="kicker">LAUNCH BOUNDARY</span>
+              <h2>Stable asset gates</h2>
+            </div>
+            <span class="pill review">NOT CLEARED</span>
+          </div>
+          <div class="gates" id="launchGates"></div>
+        </article>
+      </section>
+      <footer>
+        SCN research demonstrator · Synthetic data only · Not legal, investment,
+        regulatory, or religious advice.
+      </footer>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,72 +1,10 @@
 [
-  {
-    "id": "SUKUK-001",
-    "name": "Synthetic GCC Sukuk",
-    "class": "Sukuk",
-    "gross": 300000000,
-    "encumbered": 87000000,
-    "status": "REVIEW",
-    "policy": "Sharia review recorded",
-    "jurisdiction": "GCC"
-  },
-  {
-    "id": "BTC-001",
-    "name": "Synthetic Institutional BTC",
-    "class": "Digital Asset",
-    "gross": 200000000,
-    "encumbered": 74000000,
-    "status": "ELIGIBLE_SYNTHETIC",
-    "policy": "Institutional custody policy",
-    "jurisdiction": "ADGM"
-  },
-  {
-    "id": "UST-001",
-    "name": "Synthetic Tokenized Treasury",
-    "class": "Tokenized Security",
-    "gross": 150000000,
-    "encumbered": 48000000,
-    "status": "REVIEW",
-    "policy": "Regulated-product gate",
-    "jurisdiction": "ADGM"
-  },
-  {
-    "id": "GOLD-001",
-    "name": "Synthetic Allocated Gold",
-    "class": "Commodity",
-    "gross": 100000000,
-    "encumbered": 22000000,
-    "status": "ELIGIBLE_SYNTHETIC",
-    "policy": "Custody evidence complete",
-    "jurisdiction": "UAE"
-  },
-  {
-    "id": "LNG-001",
-    "name": "Synthetic LNG Receivable",
-    "class": "Trade Finance",
-    "gross": 100000000,
-    "encumbered": 52000000,
-    "status": "REVIEW",
-    "policy": "Evidence package review",
-    "jurisdiction": "Cross-border"
-  },
-  {
-    "id": "TF-001",
-    "name": "Synthetic Trade Finance Pool",
-    "class": "Receivable",
-    "gross": 50000000,
-    "encumbered": 18000000,
-    "status": "REVIEW",
-    "policy": "Counterparty review",
-    "jurisdiction": "GCC"
-  },
-  {
-    "id": "CASH-001",
-    "name": "Synthetic Cash Reserve",
-    "class": "Cash",
-    "gross": 100000000,
-    "encumbered": 40000000,
-    "status": "ELIGIBLE_SYNTHETIC",
-    "policy": "Reserve policy",
-    "jurisdiction": "UAE"
-  }
+  {"id":"JET-A1-FUJ-001","name":"Synthetic Jet A-1 Tank Lot","class":"Refined Product","gross":185000000,"encumbered":61000000,"status":"ELIGIBLE_SYNTHETIC","policy":"Terminal evidence quorum satisfied","jurisdiction":"UAE — Fujairah","version":3,"custodian":"Synthetic Terminal Operator","evidence":["Terminal quantity statement","Independent quality certificate","Insurance acknowledgement","Synthetic warehouse warrant"]},
+  {"id":"GASOIL-JAF-002","name":"Synthetic Gasoil Inventory","class":"Refined Product","gross":145000000,"encumbered":72000000,"status":"REVIEW","policy":"Quantity reconciliation pending","jurisdiction":"UAE — Jebel Ali","version":2,"custodian":"Synthetic Storage Operator","evidence":["Tank statement","Quality assay","Origin declaration"]},
+  {"id":"NAPHTHA-FUJ-003","name":"Synthetic Naphtha Tank Lot","class":"Refined Product","gross":92000000,"encumbered":29000000,"status":"ELIGIBLE_SYNTHETIC","policy":"Inventory finance policy","jurisdiction":"UAE — Fujairah","version":4,"custodian":"Synthetic Terminal Operator","evidence":["Terminal acknowledgement","Inspector certificate","Insurance schedule"]},
+  {"id":"LPG-RUW-004","name":"Synthetic LPG Inventory","class":"Refined Product","gross":78000000,"encumbered":26000000,"status":"REVIEW","policy":"Storage control review","jurisdiction":"UAE — Ruwais","version":1,"custodian":"Synthetic Storage Operator","evidence":["Quantity report","Storage entitlement","Specification certificate"]},
+  {"id":"AR-ADN-005","name":"Synthetic Energy Receivables Pool","class":"Receivable","gross":130000000,"encumbered":48000000,"status":"ELIGIBLE_SYNTHETIC","policy":"Controlled collections simulated","jurisdiction":"ADGM","version":3,"custodian":"Synthetic Account Bank","evidence":["Invoices","Offtaker confirmations","Assignment notice","Insurance certificate"]},
+  {"id":"SALAM-GCC-006","name":"Synthetic Forward Delivery Claim","class":"Salam Claim","gross":90000000,"encumbered":35000000,"status":"REVIEW","policy":"Delivery evidence and Sharia scope review","jurisdiction":"GCC","version":2,"custodian":"Not applicable","evidence":["Advance payment record","Commodity specification","Delivery schedule","Review-scope record"]},
+  {"id":"INFRA-IJR-007","name":"Synthetic Terminal Equipment Usufruct","class":"Ijara Asset","gross":80000000,"encumbered":24000000,"status":"VERIFIED_RECORD","policy":"Durable-asset lease evidence complete","jurisdiction":"ADGM","version":2,"custodian":"Synthetic Infrastructure SPV","evidence":["Asset title record","Lease schedule","Maintenance record","Takaful evidence"]},
+  {"id":"LNG-PILOT-008","name":"Synthetic LNG Cargo Interest","class":"LNG Pilot","gross":160000000,"encumbered":94000000,"status":"RESTRICTED","policy":"Phase-two complexity gate","jurisdiction":"Cross-border","version":1,"custodian":"Synthetic Maritime Custodian","evidence":["Provisional bill of lading","Inspection record","Voyage insurance"]}
 ]
